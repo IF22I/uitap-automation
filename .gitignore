@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+python-playwright/reports/
+
+# Java
+target/
+.idea/
+*.class
+*.iml
+
+# OS
+.DS_Store
