@@ -1,4 +1,3 @@
-```markdown
 # UITAP Automation Portfolio
 
 **Learner:** IF22I
