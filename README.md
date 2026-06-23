@@ -1,11 +1,11 @@
 ```markdown
 # UITAP Automation Portfolio
 
-**Learner:** [Your Name]  
-**Period:** [Start date] → [End date]  
+**Learner:** IF22I
+**Period:** 15.06.2026 - ±15.09.2026
 **Primary stack:** Python + Playwright  
 **Shadow stack:** Java + Selenium  
-**Repository:** [GitHub link]  
+**Repository:** https://github.com/IF22I/uitap-automation
 
 ## How to Run
 
@@ -31,9 +31,9 @@ allure serve target/allure-results    # Allure report (Week 9+)
 |---|---|---|:---:|:---:|---|---|
 | 01 | Click | Basic interaction | ✅ | ✅ | 1 | |
 | 02 | Text Input | Form fields | ✅ | ✅ | 2 | |
-| 03 | Verify Text | Text assertions | ✅ | ✅ | 2 | |
-| 04 | Dynamic ID | Stable locators | ✅ | ✅ | 2 | |
-| 05 | Class Attribute | CSS selectors | 🔄 | ⬜ | 3 | |
+| 03 | Verify Text | Text assertions | ⬜ | ⬜ | 2 | |
+| 04 | Dynamic ID | Stable locators | ⬜ | ⬜ | 2 | |
+| 05 | Class Attribute | CSS selectors | ⬜ | ⬜ | 3 | |
 | 06 | Visibility | Element state | ⬜ | ⬜ | 3 | |
 | 07 | Load Delay | Explicit waits | ⬜ | ⬜ | 4 | |
 | 08 | AJAX Data | Async waits | ⬜ | ⬜ | 4 | |
