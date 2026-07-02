@@ -30,8 +30,8 @@ allure serve target/allure-results    # Allure report (Week 9+)
 |---|---|---|:---:|:---:|---|---|
 | 01 | Click | Basic interaction | ✅ | ✅ | 1 | |
 | 02 | Text Input | Form fields | ✅ | ✅ | 2 | |
-| 03 | Verify Text | Text assertions | ⬜ | ⬜ | 2 | |
-| 04 | Dynamic ID | Stable locators | ⬜ | ⬜ | 2 | |
+| 03 | Verify Text | Text assertions | ✅ | ✅ | 2 | |
+| 04 | Dynamic ID | Stable locators | ✅ | ✅ | 2 | |
 | 05 | Class Attribute | CSS selectors | ⬜ | ⬜ | 3 | |
 | 06 | Visibility | Element state | ⬜ | ⬜ | 3 | |
 | 07 | Load Delay | Explicit waits | ⬜ | ⬜ | 4 | |
