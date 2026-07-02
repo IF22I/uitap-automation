@@ -11,7 +11,7 @@ public class DynamicIdTest extends BaseTest{
     public void testDynamicId() {
 
         driver.get(BASE_URL + "/dynamicid");
-        WebElement button = driver.findElement(By.xpath("//button[text()='Button with Dynamic ID"));
+        WebElement button = driver.findElement(By.xpath("//button[text()='Button with Dynamic ID']"));
         Assert.assertTrue(button.isDisplayed());
         button.click();
 
