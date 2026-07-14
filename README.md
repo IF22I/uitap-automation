@@ -1,7 +1,7 @@
 # UITAP Automation Portfolio
 
 **Learner:** IF22I
-**Period:** 15.06.2026 - ±15.09.2026
+**Period:** 15.06.2026 - ±01.09.2026
 **Primary stack:** Python + Playwright  
 **Shadow stack:** Java + Selenium  
 **Repository:** https://github.com/IF22I/uitap-automation
@@ -32,10 +32,10 @@ allure serve target/allure-results    # Allure report (Week 9+)
 | 02 | Text Input | Form fields | ✅ | ✅ | 2 | |
 | 03 | Verify Text | Text assertions | ✅ | ✅ | 2 | |
 | 04 | Dynamic ID | Stable locators | ✅ | ✅ | 2 | |
-| 05 | Class Attribute | CSS selectors | ⬜ | ⬜ | 3 | |
-| 06 | Visibility | Element state | ⬜ | ⬜ | 3 | |
-| 07 | Load Delay | Explicit waits | ⬜ | ⬜ | 4 | |
-| 08 | AJAX Data | Async waits | ⬜ | ⬜ | 4 | |
+| 05 | Class Attribute | CSS selectors | ✅  | ✅  | 3 | |
+| 06 | Visibility | Element state | ✅  | ✅  | 3 | |
+| 07 | Load Delay | Explicit waits | ✅  | ✅  | 4 | |
+| 08 | AJAX Data | Async waits | ✅  | ✅  | 4 | |
 | 09 | Client Side Delay | JS waits | ⬜ | ⬜ | 4 | |
 | 10 | Progress Bar | Polling | ⬜ | ⬜ | 5 | |
 | 11 | Scrolling | Viewport | ⬜ | ⬜ | 5 | |
