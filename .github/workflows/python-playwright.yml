@@ -33,8 +33,35 @@ jobs:
         run: |
           cd python-playwright
           playwright install --with-deps
+          
+      - name: Install Allure CLI
+        run: |
+          curl -sLo allure-commandline.tgz https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.tgz
+          sudo tar -zxvf allure-commandline.tgz -C /opt/
+          sudo mv /opt/allure-*/ /opt/allure
+          echo "/opt/allure/bin" >> $GITHUB_PATH          
 
       - name: Run tests
         run: |
           cd python-playwright
           pytest --browser ${{ github.event.inputs.browser || 'chromium' }}
+          
+      - name: Generate Allure HTML report
+        if: always()
+        run: |
+          allure generate python-playwright/reports/allure-results \
+            --clean -o python-playwright/reports/allure-report
+
+      - name: Upload Allure results (raw)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-python
+          path: python-playwright/reports/allure-results
+
+      - name: Upload Allure HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-html
+          path: python-playwright/reports/allure-report          
