@@ -17,6 +17,10 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"browser", "headless"})
     public void setUp(@Optional("chrome") String browser, @Optional("false") String headless) {
+
+        String headlessValue = System.getProperty("headless", headless);
+        String browserValue = System.getProperty("browser", browser);
+
         driver = DriverFactory.createDriver(browser, Boolean.parseBoolean(headless));
         driver.manage().window().maximize();
     }
