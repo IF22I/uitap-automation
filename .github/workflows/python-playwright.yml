@@ -2,7 +2,7 @@ name: Python Playwright Tests
 
 on:
   push:
-  workflow_dispatch:                    # manual trigger with a browser choice
+  workflow_dispatch:
     inputs:
       browser:
         description: 'Browser to run tests on'
@@ -17,6 +17,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      SELECTED_BROWSER: ${{ github.event.inputs.browser || 'chromium' }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +27,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           cd python-playwright
           pip install -r requirements.txt
@@ -33,26 +36,30 @@ jobs:
         run: |
           cd python-playwright
           playwright install --with-deps
-          
+
+      - name: Install unzip (system package)
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
       - name: Install Allure CLI
         run: |
-          curl -sLo allure-commandline.tgz https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.tgz
-          sudo tar -zxvf allure-commandline.tgz -C /opt/
-          sudo mv /opt/allure-*/ /opt/allure
-          echo "/opt/allure/bin" >> $GITHUB_PATH          
+          curl -sL https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.zip -o allure-commandline.zip
+          unzip -q allure-commandline.zip -d allure-cli
+          sudo mv allure-cli/allure-*/ /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
 
       - name: Run tests
         run: |
           cd python-playwright
-          pytest --browser ${{ github.event.inputs.browser || 'chromium' }}
-          
+          mkdir -p reports/allure-results
+          pytest --browser "${SELECTED_BROWSER}" --alluredir=reports/allure-results
+
       - name: Generate Allure HTML report
         if: always()
         run: |
           allure generate python-playwright/reports/allure-results \
             --clean -o python-playwright/reports/allure-report
 
-      - name: Upload Allure results (raw)
+      - name: Upload Allure results (raw JSON)
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -64,4 +71,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-html
-          path: python-playwright/reports/allure-report          
+          path: python-playwright/reports/allure-report
