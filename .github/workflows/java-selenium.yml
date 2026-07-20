@@ -1,6 +1,17 @@
 name: Java Selenium Tests
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser to run tests on'
+        required: false
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
 
 jobs:
   test:
@@ -17,4 +28,11 @@ jobs:
       - name: Run tests
         run: |
           cd java-selenium
-          mvn test
+          mvn test -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
+
+      - name: Upload Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: java-selenium/target/surefire-reports
