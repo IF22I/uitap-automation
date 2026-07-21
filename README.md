@@ -36,8 +36,8 @@ allure serve target/allure-results    # Allure report (Week 9+)
 | 06 | Visibility | Element state | ✅  | ✅  | 3 | |
 | 07 | Load Delay | Explicit waits | ✅  | ✅  | 4 | |
 | 08 | AJAX Data | Async waits | ✅  | ✅  | 4 | |
-| 09 | Client Side Delay | JS waits | ⬜ | ⬜ | 4 | |
-| 10 | Progress Bar | Polling | ⬜ | ⬜ | 5 | |
+| 09 | Client Side Delay | JS waits | ✅  | ✅  | 4 | |
+| 10 | Progress Bar | Polling | ✅  | ✅  | 5 | |
 | 11 | Scrolling | Viewport | ⬜ | ⬜ | 5 | |
 | 12 | Overlapped Element | Actionability | ⬜ | ⬜ | 5 | |
 | 13 | Sample App | E2E scenario | ⬜ | ⬜ | 6 | |
