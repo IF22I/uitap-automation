@@ -1,4 +1,4 @@
-import re
+#import re
 from playwright.sync_api import Page
 
 def test_click_button(page):
