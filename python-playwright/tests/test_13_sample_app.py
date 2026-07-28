@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
-from playwright.sync_api import expect
-from utils.helpers import login_as
+from pages.login_page import LoginPage
 
 def test_sample_app(page: Page):
-    login_as(page, "test_user", "pwd")
-    expect(page.locator("#loginstatus")).to_have_text("Welcome, test_user!")
+    login_page = LoginPage(page)
+    login_page.login("test_user", "pwd")
+    assert login_page.get_status() == "Welcome, test_user!"
