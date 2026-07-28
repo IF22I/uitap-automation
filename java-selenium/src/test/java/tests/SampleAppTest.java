@@ -1,30 +1,18 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.LoginHelper;
 
 public class SampleAppTest extends  BaseTest{
 
     @Test
     public void testSampleApp(){
 
-        driver.get(BASE_URL + "/sampleapp");
+        LoginHelper.loginAs(driver, "test_user", "pwd");
 
-        WebElement username = driver.findElement(By.cssSelector("[name='UserName']"));
-        username.sendKeys("test_user");
-
-        WebElement password = driver.findElement(By.cssSelector("[name='Password']"));
-        password.sendKeys("pwd");
-
-        WebElement button = driver.findElement(By.id("login"));
-        button.click();
-
-        WebElement result = driver.findElement(By.id("loginstatus"));
-        String actualText =  result.getText();
+        String actualText = driver.findElement(By.id("loginstatus")).getText();
         Assert.assertEquals(actualText, "Welcome, test_user!");
-
     }
-
 }
