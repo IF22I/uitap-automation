@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class ClientSideDelayTest extends BaseTest{
+public class ClientSideDelayTest extends BaseTest {
 
     @Test
     public void testClientSideDelay() {

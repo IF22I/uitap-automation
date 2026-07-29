@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DynamicIdTest extends BaseTest{
+public class DynamicIdTest extends BaseTest {
 
     @Test
     public void testDynamicId() {

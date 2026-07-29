@@ -8,7 +8,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertTrue;
 
-public class ProgressBarTest extends BaseTest{
+public class ProgressBarTest extends BaseTest {
 
     @Test
     public void testProgressBar(){

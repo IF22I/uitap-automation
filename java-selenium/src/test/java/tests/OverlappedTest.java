@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class OverlappedTest extends BaseTest{
+public class OverlappedTest extends BaseTest {
 
     @Test
     public void testOverlapped() {

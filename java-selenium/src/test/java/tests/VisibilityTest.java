@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class VisibilityTest extends BaseTest{
+public class VisibilityTest extends BaseTest {
 
    @Test
    public void testVisibility(){

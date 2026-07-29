@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class AjaxDataTest extends BaseTest{
+public class AjaxDataTest extends BaseTest {
 
     @Test
     public void testAjaxData() {
