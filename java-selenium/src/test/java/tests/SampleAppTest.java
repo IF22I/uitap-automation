@@ -14,4 +14,5 @@ public class SampleAppTest extends BaseTest {
         Assert.assertEquals(loginPage.getStatus(), "Welcome, test_user!");
 
     }
+
 }

@@ -6,11 +6,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import utils.DriverFactory;
+import config.Config;
 
 public class BaseTest {
 
     protected WebDriver driver;
-    protected static final String BASE_URL = "http://uitestingplayground.com";
+    protected static final String BASE_URL = Config.BASE_URL;
 
     @BeforeMethod
     @Parameters({"browser", "headless"})
@@ -19,7 +20,7 @@ public class BaseTest {
         String headlessValue = System.getProperty("headless", headless);
         String browserValue = System.getProperty("browser", browser);
 
-        driver = DriverFactory.createDriver(browser, Boolean.parseBoolean(headless));
+        driver = DriverFactory.createDriver(browserValue, Boolean.parseBoolean(headlessValue));
         driver.manage().window().maximize();
     }
 
