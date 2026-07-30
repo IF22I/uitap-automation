@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 from playwright.sync_api import Page
+from config import BASE_URL
 
 class LoginPage(BasePage):
 
@@ -12,7 +13,7 @@ class LoginPage(BasePage):
         self.status_message = "#loginstatus"
 
     def login(self, username: str, password: str):
-        self.go_to("http://uitestingplayground.com/sampleapp")
+        self.go_to(f"{BASE_URL}/sampleapp")
         self.page.fill(self.username_field, username)
         self.page.fill(self.password_field, password)
         self.page.click(self.login_button)
