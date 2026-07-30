@@ -1,5 +1,6 @@
 package pages;
 
+import config.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,7 +17,7 @@ public class LoginPage extends BasePage {
         }
 
         public  void  login(String username, String password){
-            goTo("http://uitestingplayground.com/sampleapp");
+            goTo(Config.BASE_URL + "/sampleapp");
             driver.findElement(usernameField).sendKeys(username);
             driver.findElement(passwordField).sendKeys(password);
             driver.findElement(loginButton).click();
