@@ -1,3 +1,6 @@
+import pytest
+
+@pytest.mark.smoke
 def test_ajax_data(page):
     page.goto("http://uitestingplayground.com/ajax")
     page.click("#ajaxButton")

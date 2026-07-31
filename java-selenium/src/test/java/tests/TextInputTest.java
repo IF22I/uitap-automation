@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class TextInputTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void testTextInput(){
 
         driver.get(BASE_URL + "/textinput");

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ClickTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testClickButton(){
         driver.get(BASE_URL + "/click");
 

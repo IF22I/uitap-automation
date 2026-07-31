@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class VerifyTextTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"})
     public void testVerifyText() {
         driver.get(BASE_URL + "/verifytext");
 

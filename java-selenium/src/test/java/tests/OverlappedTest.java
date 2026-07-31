@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class OverlappedTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testOverlapped() {
 
         driver.get(BASE_URL + "/overlapped");

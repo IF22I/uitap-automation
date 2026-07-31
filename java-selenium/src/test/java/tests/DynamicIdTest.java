@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class DynamicIdTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testDynamicId() {
 
         driver.get(BASE_URL + "/dynamicid");

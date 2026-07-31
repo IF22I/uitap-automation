@@ -1,5 +1,7 @@
 from playwright.sync_api import expect
+import pytest
 
+@pytest.mark.regression
 def test_dynamic_id(page):
     page.goto("http://uitestingplayground.com/dynamicid")
     button = page.get_by_role("button", name="Button with Dynamic ID")

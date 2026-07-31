@@ -2,6 +2,8 @@ name: Python Playwright Tests
 
 on:
   push:
+  schedule:
+    - cron: '0 2 * * *'
   workflow_dispatch:
     inputs:
       browser:
@@ -37,7 +39,12 @@ jobs:
       - name: Run tests
         run: |
           cd python-playwright
-          pytest --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            pytest -m regression --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
+          else
+            pytest -m smoke --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
+          fi
+
 
       - name: Upload Allure results
         if: always()                           

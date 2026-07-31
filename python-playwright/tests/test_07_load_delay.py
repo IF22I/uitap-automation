@@ -1,6 +1,7 @@
 from playwright.sync_api import expect
+import pytest
 
-
+@pytest.mark.smoke
 def test_load_delay(page):
     page.goto("http://uitestingplayground.com/")
     page.get_by_role("link", name="Load Delay").click()

@@ -13,7 +13,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected static final String BASE_URL = Config.BASE_URL;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Parameters({"browser", "headless"})
     public void setUp(@Optional("chrome") String browser, @Optional("false") String headless) {
 
@@ -24,7 +24,7 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit();

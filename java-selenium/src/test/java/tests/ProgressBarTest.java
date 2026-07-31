@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ProgressBarTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testProgressBar(){
 
         driver.get(BASE_URL + "/progressbar");

@@ -1,6 +1,8 @@
 from playwright.sync_api import Page
 from playwright.sync_api import expect
+import pytest
 
+@pytest.mark.regression
 def test_overlapped(page: Page):
     page.goto("http://uitestingplayground.com/overlapped")
     page.fill("#id", "test_id")

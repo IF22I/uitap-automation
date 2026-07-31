@@ -2,6 +2,8 @@ name: Java Selenium Tests
 
 on:
   push:
+  schedule:
+      - cron: '0 2 * * *'
   workflow_dispatch:
     inputs:
       browser:
@@ -28,7 +30,11 @@ jobs:
       - name: Run tests
         run: |
           cd java-selenium
-          mvn test -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            mvn test -Dgroups=regression -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
+          else
+            mvn test -Dgroups=smoke -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
+          fi
 
       - name: Upload Surefire reports
         if: always()
