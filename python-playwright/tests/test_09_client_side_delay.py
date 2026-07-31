@@ -1,3 +1,6 @@
+import pytest
+
+@pytest.mark.smoke
 def test_client_side_delay(page):
    page.goto("http://uitestingplayground.com/clientdelay")
    page.click("#ajaxButton")

@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class ClientSideDelayTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"smoke"})
     public void testClientSideDelay() {
 
         driver.get(BASE_URL + "/clientdelay");

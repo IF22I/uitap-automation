@@ -1,5 +1,7 @@
 from playwright.sync_api import Page
+import pytest
 
+@pytest.mark.regression
 def test_progress_bar(page):
     page.goto("http://uitestingplayground.com/progressbar")
     page.click("#startButton")

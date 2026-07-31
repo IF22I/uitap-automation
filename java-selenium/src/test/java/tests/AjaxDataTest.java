@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class AjaxDataTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"smoke"})
     public void testAjaxData() {
 
         driver.get(BASE_URL + "/ajax");

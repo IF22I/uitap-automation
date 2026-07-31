@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class ScrollbarTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testScrollbar() {
 
         driver.get(BASE_URL + "/scrollbars");

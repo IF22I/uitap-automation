@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class LoadDelayTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"})
     public void testLoadDelay() {
 
 /*        driver.get(BASE_URL);

@@ -1,6 +1,9 @@
 from playwright.sync_api import Page
 from pages.login_page import LoginPage
+import pytest
 
+@pytest.mark.smoke          
+@pytest.mark.regression 
 def test_sample_app(page: Page):
     login_page = LoginPage(page)
     login_page.login("test_user", "pwd")

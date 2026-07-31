@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class ClassAttributeTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"regression"})
     public void testAttributeClass() {
 
         driver.get(BASE_URL + "/classattr");

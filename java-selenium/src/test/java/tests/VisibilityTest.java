@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class VisibilityTest extends BaseTest {
 
-   @Test
+   @Test(groups = {"regression"})
    public void testVisibility(){
        driver.get(BASE_URL + "/visibility");
 

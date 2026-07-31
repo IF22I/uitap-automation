@@ -6,7 +6,7 @@ import pages.LoginPage;
 
 public class SampleAppTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"smoke", "regression"})
     public void testSampleApp(){
 
         LoginPage loginPage = new LoginPage(driver);
