@@ -10,7 +10,7 @@ def step_login (context, username, password):
     context.page.fill("input[name='Password']", password)
     context.page.click("#login")
 
-@then("I should see the welcome message")
-def step_verify(context):
-    welcome = context.page.text_content("#loginstatus")   
-    assert "Welcome, UserName!" in welcome
+@then('I should see "{message}"')
+def step_verify_message(context, message):
+    status = context.page.text_content("#loginstatus")
+    assert message in status

@@ -1,6 +1,11 @@
 Feature: Sample App Login
 
-  Scenario: Successful login with valid credentials
+  Scenario Outline: Login attempts with various credentials
     Given I am on the sample app page
-    When I log in with username "UserName" and password "pwd"
-    Then I should see the welcome message
+    When I log in with username "<username>" and password "<password>"
+    Then I should see "<message>"
+
+    Examples:
+    | username | password  | message                   |
+    | UserName | pwd       | Welcome, UserName!        |
+    | UserName | wrongpass | Invalid username/password |
