@@ -7,6 +7,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import utils.DriverFactory;
 import config.Config;
+import utils.DriverManager;
 
 public class BaseTest {
 
@@ -22,12 +23,13 @@ public class BaseTest {
 
         driver = DriverFactory.createDriver(browserValue, Boolean.parseBoolean(headlessValue));
         driver.manage().window().maximize();
+
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
-            driver.quit();
+            DriverManager.quitDriver();
         }
     }
 }
