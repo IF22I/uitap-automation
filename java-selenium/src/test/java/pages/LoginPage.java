@@ -16,11 +16,23 @@ public class LoginPage extends BasePage {
             super(driver);
         }
 
-        public  void  login(String username, String password){
+        public void open (){
             goTo(Config.BASE_URL + "/sampleapp");
+        }
+
+        public void enterCredentials(String username, String password){
             driver.findElement(usernameField).sendKeys(username);
             driver.findElement(passwordField).sendKeys(password);
+        }
+
+        public void clickLogin(){
             driver.findElement(loginButton).click();
+        }
+
+        public  void  login(String username, String password){
+            open();
+            enterCredentials(username, password);
+            clickLogin();
         }
 
         public String getStatus(){
