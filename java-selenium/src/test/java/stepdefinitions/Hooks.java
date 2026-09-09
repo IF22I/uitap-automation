@@ -8,7 +8,8 @@ public class Hooks {
 
     @Before
     public void setUp(){
-        DriverManager.getDriver("chrome", false);
+        boolean isCi = "true".equalsIgnoreCase(System.getenv("CI"));
+        DriverManager.getDriver("chrome", isCi);
     }
 
     @After

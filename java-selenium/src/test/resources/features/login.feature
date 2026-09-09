@@ -9,4 +9,4 @@ Feature: Sample App Login
     Examples:
       | username | password  | message                   |
       | UserName | pwd       | Welcome, UserName!        |
-      | UserName | wrongpass | Invalid username/password |git
+      | UserName | wrongpass | Invalid username/password |
