@@ -36,7 +36,7 @@ jobs:
             mvn test -Dgroups=smoke -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           fi
           
-       - name: Run Cucumber BDD tests
+      - name: Run Cucumber BDD tests
         run: |
           cd java-selenium
           if [ "${{ github.event_name }}" = "schedule" ]; then
