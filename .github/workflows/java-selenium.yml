@@ -27,7 +27,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Run tests
+      - name: Run TestNG tests
         run: |
           cd java-selenium
           if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -35,6 +35,15 @@ jobs:
           else
             mvn test -Dgroups=smoke -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           fi
+          
+      - name: Run Cucumber BDD tests
+        run: |
+          cd java-selenium
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@regression"
+          else
+            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@smoke"
+          fi         
 
       - name: Upload Surefire reports
         if: always()

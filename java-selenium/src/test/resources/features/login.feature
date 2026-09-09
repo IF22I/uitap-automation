@@ -1,3 +1,4 @@
+@smoke @regression
 Feature: Sample App Login
 
   Scenario Outline: Login attempts with various credentials
