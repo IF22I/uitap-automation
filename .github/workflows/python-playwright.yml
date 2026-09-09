@@ -36,7 +36,7 @@ jobs:
           cd python-playwright
           playwright install --with-deps
 
-      - name: Run tests
+      - name: Run pytest tests
         run: |
           cd python-playwright
           if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -44,7 +44,15 @@ jobs:
           else
             pytest -m smoke --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
           fi
-
+        
+      - name: Run Behave BDD tests
+        run: |
+          cd python-playwright
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            behave features/ --tags=@regression
+          else
+            behave features/ --tags=@smoke
+          fi
 
       - name: Upload Allure results
         if: always()                           
