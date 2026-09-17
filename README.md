@@ -1,7 +1,7 @@
 # UITAP Automation Portfolio
 
 **Learner:** IF22I
-**Period:** 15.06.2026 - ±01.09.2026
+**Period:** 15.06.2026 - ±10.2026
 **Primary stack:** Python + Playwright  
 **Shadow stack:** Java + Selenium  
 **Repository:** https://github.com/IF22I/uitap-automation
