@@ -21,7 +21,7 @@ public class BaseTest {
         String headlessValue = System.getProperty("headless", headless);
         String browserValue = System.getProperty("browser", browser);
 
-        driver = DriverFactory.createDriver(browserValue, Boolean.parseBoolean(headlessValue));
+        driver = DriverManager.getDriver(browserValue, Boolean.parseBoolean(headlessValue));
         driver.manage().window().maximize();
 
     }
