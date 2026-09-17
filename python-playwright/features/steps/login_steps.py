@@ -13,4 +13,4 @@ def step_login (context, username, password):
 @then('I should see "{message}"')
 def step_verify_message(context, message):
     status = context.page.text_content("#loginstatus")
-    assert message in status
+    assert message in status    
