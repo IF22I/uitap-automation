@@ -43,7 +43,7 @@ allure serve target/allure-results    # Allure report (Week 9+)
 | 13 | Sample App | E2E scenario | ✅  | ✅  | 6 | |
 | 14 | Mouse Over | Hover | ✅ | ✅ | 7 | |
 | 15 | Hidden Layers | Z-index | ✅ | ✅ | 7 | |
-| 16 | Non-Breaking Space | Text gotchas | ⬜ | ⬜ | 7 | |
+| 16 | Non-Breaking Space | Text gotchas | ✅ | ✅ | 7 | |
 | 17 | Dynamic Table | Table iteration | ⬜ | ⬜ | 8 | |
 | 18 | Alerts | Dialog handling | ⬜ | ⬜ | 8 | |
 | 19 | Disabled Input | State testing | ⬜ | ⬜ | 8 | |
