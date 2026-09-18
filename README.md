@@ -26,8 +26,8 @@ allure serve target/allure-results    # Allure report (Week 9+)
 
 ## Progress
 
-| # | Exercise | Core Concept | Python | Java | Week | Notes |
-|---|---|---|:---:|:---:|---|---|
+| # | Exercise | Core Concept | Python | Java |
+|---|---|---|:---:|:---:|
 | 01 | Click | Basic interaction | ✅ | ✅ | 1 | |
 | 02 | Text Input | Form fields | ✅ | ✅ | 2 | |
 | 03 | Verify Text | Text assertions | ✅ | ✅ | 2 | |
@@ -42,7 +42,7 @@ allure serve target/allure-results    # Allure report (Week 9+)
 | 12 | Overlapped Element | Actionability | ✅  | ✅  | 5 | |
 | 13 | Sample App | E2E scenario | ✅  | ✅  | 6 | |
 | 14 | Mouse Over | Hover | ✅ | ✅ | 7 | |
-| 15 | Hidden Layers | Z-index | ⬜ | ⬜ | 7 | |
+| 15 | Hidden Layers | Z-index | ✅ | ✅ | 7 | |
 | 16 | Non-Breaking Space | Text gotchas | ⬜ | ⬜ | 7 | |
 | 17 | Dynamic Table | Table iteration | ⬜ | ⬜ | 8 | |
 | 18 | Alerts | Dialog handling | ⬜ | ⬜ | 8 | |
