@@ -14,6 +14,14 @@ on:
         options:
           - chrome
           - firefox
+      test_group:
+        description: 'Test group to run'
+        required: false
+        default: 'smoke'
+        type: choice
+        options:
+          - smoke
+          - regression
 
 jobs:
   test:
@@ -30,7 +38,7 @@ jobs:
       - name: Run TestNG tests
         run: |
           cd java-selenium
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
             mvn test -Dgroups=regression -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           else
             mvn test -Dgroups=smoke -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
@@ -39,11 +47,11 @@ jobs:
       - name: Run Cucumber BDD tests
         run: |
           cd java-selenium
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
             mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@regression"
           else
             mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@smoke"
-          fi         
+          fi  
 
       - name: Upload Surefire reports
         if: always()
