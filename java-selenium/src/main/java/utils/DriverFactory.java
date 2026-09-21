@@ -15,12 +15,18 @@ public class DriverFactory {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                if (headless) options.addArguments("--headless=new");
+                if (headless) {
+                    options.addArguments("--headless=new");
+                    options.addArguments("--window-size=1920,1080");
+                }
                 return new ChromeDriver(options);
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                if (headless) firefoxOptions.addArguments("--headless");
+                if (headless) {
+                    firefoxOptions.addArguments("--headless");
+                    firefoxOptions.addArguments("--width=1920", "--height=1080");
+                }
                 return new FirefoxDriver(firefoxOptions);
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browserName);

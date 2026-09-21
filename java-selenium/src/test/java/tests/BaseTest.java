@@ -22,7 +22,9 @@ public class BaseTest {
         String browserValue = System.getProperty("browser", browser);
 
         driver = DriverManager.getDriver(browserValue, Boolean.parseBoolean(headlessValue));
-        driver.manage().window().maximize();
+        if (!Boolean.parseBoolean(headlessValue)) {
+            driver.manage().window().maximize();
+        }
 
     }
 
