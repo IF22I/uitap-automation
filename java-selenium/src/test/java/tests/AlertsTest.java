@@ -13,7 +13,8 @@ import java.time.Duration;
 public class AlertsTest extends BaseTest{
 
     @Test(groups = {"regression"})
-    public void testClickButton() {
+    public void testAlerts() {
+
         driver.get(BASE_URL + "/alerts");
 
         driver.findElement(By.id("alertButton")).click();
@@ -35,7 +36,7 @@ public class AlertsTest extends BaseTest{
         wait.until(ExpectedConditions.alertIsPresent());
         Alert followUpAlertAfterPrompt = driver.switchTo().alert();
         String promptMessage = followUpAlertAfterPrompt.getText();
-        followUpAlertAfterConfirm.accept();
+        followUpAlertAfterPrompt.accept();
 
         Assert.assertTrue(promptMessage.contains("my answer"),  "Expected the follow-up alert to contain the entered prompt value");
 
