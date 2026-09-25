@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Page, expect
 
 
-@pytest.mark.regression
+@pytest.mark.smoke
 def test_disabled_input(page: Page):
     page.goto("http://uitestingplayground.com/disabledinput")
     # page.fill("#inputField", "first_text_input")
