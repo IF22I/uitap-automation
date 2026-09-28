@@ -47,7 +47,7 @@ allure serve target/allure-results    # Allure report (Week 9+)
 | 17 | Dynamic Table | Table iteration | ✅ | ✅ | 8 | |
 | 18 | Alerts | Dialog handling | 🔄 | ✅ | 8 | |
 | 19 | Disabled Input | State testing | ✅ | ✅ | 8 | |
-| 20 | Animated Button | Race conditions | ⬜ | ⬜ | 10 | |
+| 20 | Animated Button | Race conditions | ✅ | ✅ | 10 | |
 | 21 | File Upload | File input | ⬜ | ⬜ | 10 | |
 | 22 | Shadow DOM | Web Components | ⬜ | ⬜ | 11 | |
 
