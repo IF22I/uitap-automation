@@ -54,9 +54,15 @@ jobs:
             behave features/ --tags=@smoke
           fi
 
-      - name: Upload Allure results
-        if: always()                           
+      - name: Generate Allure report
+        if: always()
+        run: |
+          npm install -g allure-commandline --save-dev
+          allure generate python-playwright/allure-results --clean -o python-playwright/allure-report
+
+      - name: Upload Allure report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: python-playwright/allure-results
+          name: allure-report
+          path: python-playwright/allure-report
