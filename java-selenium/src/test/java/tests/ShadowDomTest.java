@@ -5,6 +5,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -15,6 +16,11 @@ public class ShadowDomTest extends BaseTest{
 
     @Test(groups = {"smoke"})
     public void testShadowDom() throws Exception {
+
+        if (GraphicsEnvironment.isHeadless()) {
+            throw new SkipException("System clipboard requires a desktop session; unavailable on headless runners");
+        }
+
         driver.get(BASE_URL + "/shadowdom");
 
         WebElement host = driver.findElement(By.tagName("guid-generator"));
@@ -30,6 +36,5 @@ public class ShadowDomTest extends BaseTest{
 
         Assert.assertEquals(clipboardText, element.getAttribute("value"));
     }
-
 
 }
