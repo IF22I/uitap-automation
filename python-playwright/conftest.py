@@ -13,5 +13,6 @@ def browser_type_launch_args(browser_type_launch_args):
             "--disable-backgrounding-occluded-windows",
             "--disable-renderer-backgrounding",
             "--disable-features=IntensiveWakeUpThrottling",
+            "--unsafely-treat-insecure-origin-as-secure=http://uitestingplayground.com",
         ],
     }
