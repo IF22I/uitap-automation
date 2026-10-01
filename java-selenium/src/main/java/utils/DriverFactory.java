@@ -15,6 +15,7 @@ public class DriverFactory {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
+                options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://uitestingplayground.com");
                 if (headless) {
                     options.addArguments("--headless=new");
                     options.addArguments("--window-size=1920,1080");
