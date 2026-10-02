@@ -15,6 +15,14 @@ on:
           - chromium
           - firefox
           - webkit
+      test_group:
+        description: 'Test group to run'
+        required: false
+        default: 'smoke'
+        type: choice
+        options:
+          - smoke
+          - regression    
 
 jobs:
   test:
@@ -39,7 +47,7 @@ jobs:
       - name: Run pytest tests
         run: |
           cd python-playwright
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
             pytest -m regression --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
           else
             pytest -m smoke --browser ${{ github.event.inputs.browser || 'chromium' }} --alluredir=allure-results
@@ -48,7 +56,7 @@ jobs:
       - name: Run Behave BDD tests
         run: |
           cd python-playwright
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
             behave features/ --tags=@regression
           else
             behave features/ --tags=@smoke
