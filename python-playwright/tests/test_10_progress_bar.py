@@ -1,5 +1,6 @@
-from playwright.sync_api import Page
 import pytest
+from playwright.sync_api import Page
+
 
 @pytest.mark.regression
 def test_progress_bar(page):
