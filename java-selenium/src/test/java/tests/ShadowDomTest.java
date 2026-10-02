@@ -14,7 +14,7 @@ import java.awt.datatransfer.DataFlavor;
 
 public class ShadowDomTest extends BaseTest{
 
-    @Test(groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testShadowDom() throws Exception {
 
         if (GraphicsEnvironment.isHeadless()) {

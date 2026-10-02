@@ -5,6 +5,7 @@ from playwright.sync_api import Page, expect
 
 
 @pytest.mark.smoke
+@pytest.mark.regression 
 def test_animated_button(page: Page):
     page.goto("http://uitestingplayground.com/animation")
     page.click("#animationButton")

@@ -3,6 +3,7 @@ from playwright.sync_api import Page
 
 
 @pytest.mark.smoke
+@pytest.mark.regression 
 def test_mouse_over(page: Page):
 
     page.goto("http://uitestingplayground.com/mouseover")

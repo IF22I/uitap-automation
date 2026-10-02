@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 
 
 @pytest.mark.smoke
+@pytest.mark.regression 
 def test_shadowdom(page: Page):
 
     page.context.grant_permissions(["clipboard-read", "clipboard-write"])

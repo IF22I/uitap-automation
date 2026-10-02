@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 
 
 @pytest.mark.smoke
+@pytest.mark.regression 
 def test_disabled_input(page: Page):
     page.goto("http://uitestingplayground.com/disabledinput")
 

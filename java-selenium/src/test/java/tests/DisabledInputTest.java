@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class DisabledInputTest extends BaseTest{
 
-    @Test(groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testDisabledInputTest() {
         driver.get(BASE_URL + "/disabledinput");
 

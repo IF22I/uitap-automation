@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class AjaxDataTest extends BaseTest {
 
-    @Test (groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testAjaxData() {
 
         driver.get(BASE_URL + "/ajax");

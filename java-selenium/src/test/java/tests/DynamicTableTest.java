@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DynamicTableTest extends BaseTest{
 
-    @Test(groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testDynamicTable() {
 
         driver.get(BASE_URL + "/dynamictable");
