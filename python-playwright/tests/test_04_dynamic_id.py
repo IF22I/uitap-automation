@@ -1,5 +1,6 @@
-from playwright.sync_api import expect
 import pytest
+from playwright.sync_api import expect
+
 
 @pytest.mark.regression
 def test_dynamic_id(page):

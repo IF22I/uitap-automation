@@ -1,7 +1,8 @@
 import re
-from playwright.sync_api import Page
-from playwright.sync_api import expect
+
 import pytest
+from playwright.sync_api import Page, expect
+
 
 @pytest.mark.regression
 def test_text_input(page: Page):
