@@ -6,6 +6,7 @@ from playwright.sync_api import Page, expect
 
 
 @pytest.mark.smoke
+@pytest.mark.regression 
 def test_file_upload(page: Page):
     page.goto("http://uitestingplayground.com/upload")
 

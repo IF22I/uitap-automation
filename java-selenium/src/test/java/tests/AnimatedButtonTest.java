@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class AnimatedButtonTest extends BaseTest{
-	@Test (groups = {"smoke"})
+        @Test (groups = {"smoke", "regression"})
 	public void testAnimatedButton(){
 
         driver.get(BASE_URL + "/animation");

@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class LoadDelayTest extends BaseTest {
 
-    @Test(groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testLoadDelay() {
 
         driver.get(BASE_URL + "/loaddelay");

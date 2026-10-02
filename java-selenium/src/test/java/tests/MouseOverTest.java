@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class MouseOverTest extends BaseTest{
 
-    @Test (groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testMouseOver(){
 
         driver.get(BASE_URL + "/mouseover");

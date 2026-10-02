@@ -9,7 +9,7 @@ import java.io.File;
 
 public class FileUploadTest extends BaseTest{
 
-    @Test (groups = {"smoke"})
+    @Test (groups = {"smoke", "regression"})
     public void testFileUpload(){
 
         driver.get(BASE_URL + "/upload");
