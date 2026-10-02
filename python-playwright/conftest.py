@@ -1,5 +1,11 @@
-# pytest-playwright automatically provides `page`, `browser`, and `context` fixtures.
-# Add project-level configuration and custom fixtures here as the course progresses.
+    # Launch options shared by every Playwright test.
+
+    # - The timer-throttling flags stop Chrome from delaying page timers in
+    #   unfocused tabs, which made the Alerts test flaky (Exercise 18).
+    # - The secure-origin flag lets navigator.clipboard work on the plain-HTTP
+    #   practice site (Exercise 22).
+    # - channel="chromium" uses the full Chromium build instead of the headless
+    #   shell, which lacked the clipboard API in CI (Exercise 22).
 
 import pytest
 
