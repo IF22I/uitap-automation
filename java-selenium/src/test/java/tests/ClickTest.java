@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ClickTest extends BaseTest {
@@ -13,10 +14,10 @@ public class ClickTest extends BaseTest {
         WebElement button = driver.findElement(By.id("badButton"));
         button.click();
 
-//        String buttonClass = button.getAttribute("class");
-//        Assert.assertTrue(
-//                buttonClass.contains("btn-success"),
-//                "Expected 'btn-success' class after clicking the button, but got: " + buttonClass
-//        );
+        String buttonClass = button.getAttribute("class");
+        Assert.assertTrue(
+                buttonClass.contains("btn-success"),
+                "Expected 'btn-success' class after clicking the button, but got: " + buttonClass
+        );
     }
 }

@@ -1,0 +1,229 @@
+[1mdiff --git a/python-playwright/tests/test_01_click.py b/python-playwright/tests/test_01_click.py[m
+[1mindex f4133c6..1afd0d1 100644[m
+[1m--- a/python-playwright/tests/test_01_click.py[m
+[1m+++ b/python-playwright/tests/test_01_click.py[m
+[36m@@ -1,7 +1,11 @@[m
+[32m+[m[32mimport re[m
+[32m+[m
+ import pytest[m
+[31m-from playwright.sync_api import Page[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_click_button(page: Page):[m
+     page.goto("http://uitestingplayground.com/click")[m
+[31m-    page.click("#badButton")[m
+\ No newline at end of file[m
+[32m+[m[32m    page.click("#badButton")[m
+[32m+[m[32m    expect(page.locator("#badButton")).to_have_class(re.compile(r"btn-success"))[m
+\ No newline at end of file[m
+[1mdiff --git a/python-playwright/tests/test_02_text_input.py b/python-playwright/tests/test_02_text_input.py[m
+[1mindex 96d5df7..95289f2 100644[m
+[1m--- a/python-playwright/tests/test_02_text_input.py[m
+[1m+++ b/python-playwright/tests/test_02_text_input.py[m
+[36m@@ -1,7 +1,8 @@[m
+ import re[m
+[31m-from playwright.sync_api import Page[m
+[31m-from playwright.sync_api import expect[m
+[32m+[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_text_input(page: Page):[m
+[1mdiff --git a/python-playwright/tests/test_03_verify_text.py b/python-playwright/tests/test_03_verify_text.py[m
+[1mindex e2cf128..4bebd2e 100644[m
+[1m--- a/python-playwright/tests/test_03_verify_text.py[m
+[1m+++ b/python-playwright/tests/test_03_verify_text.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import expect[m
+[32m+[m
+ [m
+ @pytest.mark.smoke[m
+ def test_verify_text(page):[m
+[1mdiff --git a/python-playwright/tests/test_04_dynamic_id.py b/python-playwright/tests/test_04_dynamic_id.py[m
+[1mindex 4ad29bd..4f54aea 100644[m
+[1m--- a/python-playwright/tests/test_04_dynamic_id.py[m
+[1m+++ b/python-playwright/tests/test_04_dynamic_id.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_dynamic_id(page):[m
+[1mdiff --git a/python-playwright/tests/test_05_class_attribute.py b/python-playwright/tests/test_05_class_attribute.py[m
+[1mindex ab8da79..9d02e08 100644[m
+[1m--- a/python-playwright/tests/test_05_class_attribute.py[m
+[1m+++ b/python-playwright/tests/test_05_class_attribute.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_class_attrribute(page):[m
+[1mdiff --git a/python-playwright/tests/test_06_visibility.py b/python-playwright/tests/test_06_visibility.py[m
+[1mindex ce166fa..ba8311f 100644[m
+[1m--- a/python-playwright/tests/test_06_visibility.py[m
+[1m+++ b/python-playwright/tests/test_06_visibility.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_click_button(page):[m
+[1mdiff --git a/python-playwright/tests/test_07_load_delay.py b/python-playwright/tests/test_07_load_delay.py[m
+[1mindex 86a6ddc..2d62c96 100644[m
+[1m--- a/python-playwright/tests/test_07_load_delay.py[m
+[1m+++ b/python-playwright/tests/test_07_load_delay.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import expect[m
+[32m+[m
+ [m
+ @pytest.mark.smoke[m
+ def test_load_delay(page):[m
+[1mdiff --git a/python-playwright/tests/test_08_AJAX_Data.py b/python-playwright/tests/test_08_AJAX_Data.py[m
+[1mindex b59b5ca..35af620 100644[m
+[1m--- a/python-playwright/tests/test_08_AJAX_Data.py[m
+[1m+++ b/python-playwright/tests/test_08_AJAX_Data.py[m
+[36m@@ -1,7 +1,9 @@[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.smoke[m
+[31m-def test_ajax_data(page):[m
+[32m+[m[32mdef test_ajax_data(page: Page):[m
+     page.goto("http://uitestingplayground.com/ajax")[m
+     page.click("#ajaxButton")[m
+[31m-    page.click("text=Data loaded with AJAX get request.", timeout=20000) #default is 30000 which is enough for the exercise[m
+\ No newline at end of file[m
+[32m+[m[32m    expect(page.locator("#content p")).to_have_text("Data loaded with AJAX get request.", timeout=20000)[m
+\ No newline at end of file[m
+[1mdiff --git a/python-playwright/tests/test_09_client_side_delay.py b/python-playwright/tests/test_09_client_side_delay.py[m
+[1mindex dcbf3d4..76a1649 100644[m
+[1m--- a/python-playwright/tests/test_09_client_side_delay.py[m
+[1m+++ b/python-playwright/tests/test_09_client_side_delay.py[m
+[36m@@ -1,7 +1,10 @@[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.smoke[m
+[31m-def test_client_side_delay(page):[m
+[32m+[m[32mdef test_client_side_delay(page: Page):[m
+    page.goto("http://uitestingplayground.com/clientdelay")[m
+    page.click("#ajaxButton")[m
+[31m-   page.click("text=Data calculated on the client side.")[m
+\ No newline at end of file[m
+[32m+[m[32m   page.click("text=Data calculated on the client side.")[m
+[32m+[m[32m   expect(page.locator("#content p")).to_have_text("Data calculated on the client side.", timeout=20000)[m
+\ No newline at end of file[m
+[1mdiff --git a/python-playwright/tests/test_10_progress_bar.py b/python-playwright/tests/test_10_progress_bar.py[m
+[1mindex 4999818..dd55ece 100644[m
+[1m--- a/python-playwright/tests/test_10_progress_bar.py[m
+[1m+++ b/python-playwright/tests/test_10_progress_bar.py[m
+[36m@@ -1,5 +1,6 @@[m
+[31m-from playwright.sync_api import Page[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_progress_bar(page):[m
+[1mdiff --git a/python-playwright/tests/test_11_scrollbars.py b/python-playwright/tests/test_11_scrollbars.py[m
+[1mindex c85b8ef..e361fb2 100644[m
+[1m--- a/python-playwright/tests/test_11_scrollbars.py[m
+[1m+++ b/python-playwright/tests/test_11_scrollbars.py[m
+[36m@@ -1,7 +1,9 @@[m
+[31m-from playwright.sync_api import Page[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+[31m-def test_scrollbars(page):[m
+[32m+[m[32mdef test_scrollbars(page: Page):[m
+     page.goto("http://uitestingplayground.com/scrollbars")[m
+[31m-    page.click("#hidingButton")[m
+\ No newline at end of file[m
+[32m+[m[32m    page.click("#hidingButton")[m
+[32m+[m[32m    expect(page.locator("#hidingButton")).to_be_in_viewport()[m
+\ No newline at end of file[m
+[1mdiff --git a/python-playwright/tests/test_12_overlapped.py b/python-playwright/tests/test_12_overlapped.py[m
+[1mindex d75d2d2..8a8aaec 100644[m
+[1m--- a/python-playwright/tests/test_12_overlapped.py[m
+[1m+++ b/python-playwright/tests/test_12_overlapped.py[m
+[36m@@ -1,6 +1,6 @@[m
+[31m-from playwright.sync_api import Page[m
+[31m-from playwright.sync_api import expect[m
+ import pytest[m
+[32m+[m[32mfrom playwright.sync_api import Page, expect[m
+[32m+[m
+ [m
+ @pytest.mark.regression[m
+ def test_overlapped(page: Page):[m
+[1mdiff --git a/python-playwright/tests/test_13_sample_app.py b/python-playwright/tests/test_13_sample_app.py[m
+[1mindex bc9a4d9..573690c 100644[m
+[1m--- a/python-playwright/tests/test_13_sample_app.py[m
+[1m+++ b/python-playwright/tests/test_13_sample_app.py[m
+[36m@@ -1,6 +1,7 @@[m
+[31m-from playwright.sync_api import Page[m
+[31m-from pages.login_page import LoginPage[m
+ import pytest[m
+[32m+[m[32mfrom pages.login_page import LoginPage[m
+[32m+[m[32mfrom playwright.sync_api import Page[m
+[32m+[m
+ [m
+ @pytest.mark.smoke          [m
+ @pytest.mark.regression [m
+[1mdiff --git a/python-playwright/tests/test_17_dynamictable.py b/python-playwright/tests/test_17_dynamictable.py[m
+[1mindex a27a1d2..64aa6f2 100644[m
+[1m--- a/python-playwright/tests/test_17_dynamictable.py[m
+[1m+++ b/python-playwright/tests/test_17_dynamictable.py[m
+[36m@@ -1,6 +1,7 @@[m
+ import pytest[m
+ from playwright.sync_api import Page, expect[m
+ [m
+[32m+[m
+ @pytest.mark.smoke[m
+ def test_dynamictable(page: Page):[m
+ [m
+[1mdiff --git a/python-playwright/tests/test_18_alerts.py b/python-playwright/tests/test_18_alerts.py[m
+[1mindex 91c6b50..7749d9c 100644[m
+[1m--- a/python-playwright/tests/test_18_alerts.py[m
+[1m+++ b/python-playwright/tests/test_18_alerts.py[m
+[36m@@ -1,6 +1,9 @@[m
+[31m-import pytest, time[m
+[32m+[m[32mimport time[m
+[32m+[m
+[32m+[m[32mimport pytest[m
+ from playwright.sync_api import Page[m
+ [m
+[32m+[m
+ @pytest.mark.smoke[m
+ @pytest.mark.skip(reason="Chrome background-tab timer throttling delays the Alerts page's follow-up dialog unpredictably in this environment. Root cause confirmed (browser timer throttling), standard mitigation flags applied in conftest.py, but still not fully reliable. Test logic itself verified correct through manual and instrumented runs. Tracked in backlog for further investigation.")[m
+ def test_alerts(page: Page):[m
+[1mdiff --git a/python-playwright/tests/test_22_shadowdom.py b/python-playwright/tests/test_22_shadowdom.py[m
+[1mindex e89460e..9cc815a 100644[m
+[1m--- a/python-playwright/tests/test_22_shadowdom.py[m
+[1m+++ b/python-playwright/tests/test_22_shadowdom.py[m
+[36m@@ -1,6 +1,7 @@[m
+ import pytest[m
+ from playwright.sync_api import Page, expect[m
+ [m
+[32m+[m
+ @pytest.mark.smoke[m
+ def test_shadowdom(page: Page):[m
+ [m
