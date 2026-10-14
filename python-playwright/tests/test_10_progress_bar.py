@@ -14,5 +14,5 @@ def test_progress_bar(page):
             break
 
     page.click("#stopButton")
-    diffrence = abs(current - 75)
-    assert diffrence<=3, f"Stopped {diffrence}% away from the target"
+    difference = abs(current - 75)
+    assert difference<=3, f"Stopped {difference}% away from the target"

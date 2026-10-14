@@ -14,5 +14,6 @@ target/
 # OS
 .DS_Store
 
-#reports
-allure-results
+# Reports
+allure-results/
+allure-report/
