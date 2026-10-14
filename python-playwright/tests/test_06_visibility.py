@@ -3,7 +3,7 @@ from playwright.sync_api import expect
 
 
 @pytest.mark.regression
-def test_click_button(page):
+def test_visibility(page):
     page.goto("http://uitestingplayground.com/visibility")
     page.click("#hideButton")
 
