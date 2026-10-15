@@ -1,4 +1,5 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page, expect
 
 
@@ -6,7 +7,7 @@ from playwright.sync_api import Page, expect
 @pytest.mark.regression 
 def test_dynamictable(page: Page):
 
-    page.goto("http://uitestingplayground.com/dynamictable")
+    page.goto(f"{BASE_URL}/dynamictable")
 
     headers = page.locator("span[role='columnheader']").all()
     cpu_index = None

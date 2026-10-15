@@ -57,9 +57,9 @@ jobs:
         run: |
           cd python-playwright
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
-            behave features/ --tags=@regression
+            behave features/ --tags=@regression -D browser=${{ github.event.inputs.browser || 'chromium' }}
           else
-            behave features/ --tags=@smoke
+            behave features/ --tags=@smoke -D browser=${{ github.event.inputs.browser || 'chromium' }}
           fi
 
       - name: Generate Allure report

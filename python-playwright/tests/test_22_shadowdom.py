@@ -1,4 +1,5 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page, expect
 
 
@@ -8,7 +9,7 @@ def test_shadowdom(page: Page):
 
     page.context.grant_permissions(["clipboard-read", "clipboard-write"])
 
-    page.goto("http://uitestingplayground.com/shadowdom")
+    page.goto(f"{BASE_URL}/shadowdom")
 
     page.click("#buttonGenerate")
     page.click("#buttonCopy")

@@ -1,11 +1,12 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import expect
 
 
 @pytest.mark.smoke
 @pytest.mark.regression 
 def test_load_delay(page):
-    page.goto("http://uitestingplayground.com/")
+    page.goto(f"{BASE_URL}/")
     page.get_by_role("link", name="Load Delay").click()
     page.get_by_role("button", name="Button Appearing After Delay").click()
     expect(page.get_by_role("button", name="Button Appearing After Delay")).to_be_visible()

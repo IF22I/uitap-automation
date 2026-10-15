@@ -1,11 +1,12 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page
 
 
 @pytest.mark.regression
 def test_hiddenlayer(page: Page):
 
-    page.goto("http://uitestingplayground.com/hiddenlayers")
+    page.goto(f"{BASE_URL}/hiddenlayers")
 
     green_button = page.locator("#greenButton")
     

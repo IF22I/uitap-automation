@@ -48,9 +48,9 @@ jobs:
         run: |
           cd java-selenium
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
-            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@regression"
+            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@regression" -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           else
-            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@smoke"
+            mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@smoke" -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           fi  
 
       - name: Upload Surefire reports
