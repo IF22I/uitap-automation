@@ -2,13 +2,14 @@ import os
 from pathlib import Path
 
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page, expect
 
 
 @pytest.mark.smoke
 @pytest.mark.regression 
 def test_file_upload(page: Page):
-    page.goto("http://uitestingplayground.com/upload")
+    page.goto(f"{BASE_URL}/upload")
 
     file_path = Path(__file__).parent / "testdata" / "sample.txt"
     page.frame_locator("iframe").locator("#browse").set_input_files(str(file_path))

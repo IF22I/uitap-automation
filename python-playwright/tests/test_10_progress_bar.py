@@ -1,10 +1,11 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page
 
 
 @pytest.mark.regression
 def test_progress_bar(page):
-    page.goto("http://uitestingplayground.com/progressbar")
+    page.goto(f"{BASE_URL}/progressbar")
     page.click("#startButton")
 
     while True:

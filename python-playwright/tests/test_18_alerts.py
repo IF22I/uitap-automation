@@ -1,6 +1,7 @@
 import time
 
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page
 
 
@@ -8,7 +9,7 @@ from playwright.sync_api import Page
 @pytest.mark.regression 
 @pytest.mark.skip(reason="Chrome background-tab timer throttling delays the Alerts page's follow-up dialog unpredictably in this environment. Root cause confirmed (browser timer throttling), standard mitigation flags applied in conftest.py, but still not fully reliable. Test logic itself verified correct through manual and instrumented runs. Tracked in backlog for further investigation.")
 def test_alerts(page: Page):
-    page.goto("http://uitestingplayground.com/alerts")
+    page.goto(f"{BASE_URL}/alerts")
 
     def wait_until(predicate, timeout=10, interval=0.1):
         start = time.time()

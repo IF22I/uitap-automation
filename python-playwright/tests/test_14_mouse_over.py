@@ -1,4 +1,5 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import Page
 
 
@@ -6,7 +7,7 @@ from playwright.sync_api import Page
 @pytest.mark.regression 
 def test_mouse_over(page: Page):
 
-    page.goto("http://uitestingplayground.com/mouseover")
+    page.goto(f"{BASE_URL}/mouseover")
 
     click_me = page.get_by_text("Click me", exact=True)
     count = page.locator("#clickCount")

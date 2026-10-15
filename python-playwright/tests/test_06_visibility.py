@@ -1,10 +1,11 @@
 import pytest
+from config import BASE_URL
 from playwright.sync_api import expect
 
 
 @pytest.mark.regression
 def test_visibility(page):
-    page.goto("http://uitestingplayground.com/visibility")
+    page.goto(f"{BASE_URL}/visibility")
     page.click("#hideButton")
 
     expect(page.locator("#removedButton")).to_be_hidden()        
