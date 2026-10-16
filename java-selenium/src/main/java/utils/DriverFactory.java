@@ -1,10 +1,8 @@
 package utils;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -13,7 +11,6 @@ public class DriverFactory {
     public static WebDriver createDriver(String browserName, boolean headless) {
         switch (browserName.toLowerCase()) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--unsafely-treat-insecure-origin-as-secure=http://uitestingplayground.com");
                 if (headless) {
@@ -22,7 +19,6 @@ public class DriverFactory {
                 }
                 return new ChromeDriver(options);
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 if (headless) {
                     firefoxOptions.addArguments("--headless");
