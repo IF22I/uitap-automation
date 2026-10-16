@@ -12,17 +12,18 @@ import utils.DriverManager;
 public class BaseTest {
 
     protected WebDriver driver;
+    protected boolean headlessBrowser;
     protected static final String BASE_URL = Config.BASE_URL;
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"browser", "headless"})
     public void setUp(@Optional("chrome") String browser, @Optional("false") String headless) {
 
-        String headlessValue = System.getProperty("headless", headless);
         String browserValue = System.getProperty("browser", browser);
+        headlessBrowser = Boolean.parseBoolean(System.getProperty("headless", headless));
 
-        driver = DriverManager.getDriver(browserValue, Boolean.parseBoolean(headlessValue));
-        if (!Boolean.parseBoolean(headlessValue)) {
+        driver = DriverManager.getDriver(browserValue, headlessBrowser);
+        if (!headlessBrowser) {
             driver.manage().window().maximize();
         }
 
