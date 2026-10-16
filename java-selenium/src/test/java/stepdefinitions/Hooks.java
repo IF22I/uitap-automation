@@ -10,7 +10,7 @@ public class Hooks {
     public void setUp(){
         boolean isCi = "true".equalsIgnoreCase(System.getenv("CI"));
         String browser = System.getProperty("browser", "chrome");
-        DriverManager.getDriver("chrome", isCi);
+        DriverManager.getDriver(browser, isCi);
     }
 
     @After
