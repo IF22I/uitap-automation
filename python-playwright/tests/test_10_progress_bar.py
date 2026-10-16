@@ -5,8 +5,9 @@ from playwright.sync_api import Page
 TARGET = 75
 TOLERANCE = 3
 
+
 @pytest.mark.regression
-def test_progress_bar(page):
+def test_progress_bar(page: Page):
     page.goto(f"{BASE_URL}/progressbar")
     page.click("#startButton")
 

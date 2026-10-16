@@ -18,11 +18,14 @@ def before_all(context):
     browser_type = getattr(context.playwright, browser_name)
     context.browser = browser_type.launch(headless=is_ci)
 
+
 def before_scenario(context, scenario):
     context.page = context.browser.new_page()
 
+
 def after_scenario(context, scenario):
     context.page.close()
+
 
 def after_all(context):
     browser = getattr(context, "browser", None)
