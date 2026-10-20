@@ -5,7 +5,10 @@ from playwright.sync_api import Page, expect
 
 @pytest.mark.smoke
 @pytest.mark.regression 
-def test_shadowdom(page: Page):
+def test_shadowdom(page: Page, browser_name: str):
+    if browser_name != "chromium":
+        pytest.skip("Clipboard permissions are only supported in Chromium-based browsers")
+
 
     page.context.grant_permissions(["clipboard-read", "clipboard-write"])
 
