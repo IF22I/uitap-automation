@@ -23,9 +23,14 @@ on:
           - smoke
           - regression
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -67,6 +72,27 @@ jobs:
           name: allure-report
           path: java-selenium/allure-report
 
+      - name: Publish Java report to combined site branch
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          git fetch origin gh-pages-src
+          git worktree add pages-src origin/gh-pages-src
+          rm -rf pages-src/java
+          mkdir -p pages-src/java
+          cp -r java-selenium/allure-report/* pages-src/java/
+          cd pages-src
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add java
+          git commit -m "chore: update java allure report [skip ci]" || echo "Nothing to commit"
+          git push origin HEAD:gh-pages-src || (git pull --rebase origin gh-pages-src && git push origin HEAD:gh-pages-src)
+
+      - name: Upload Pages artifact
+        if: always() && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-src
+
       - name: Upload Surefire reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -80,3 +106,21 @@ jobs:
         with:
           name: cucumber-reports
           path: java-selenium/target/cucumber-reports.html
+
+  deploy:
+    needs: test
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
