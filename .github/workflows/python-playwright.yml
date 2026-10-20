@@ -30,6 +30,8 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -87,11 +89,26 @@ jobs:
           name: allure-report
           path: python-playwright/allure-report
 
+      - name: Publish Python report to combined site branch
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          git fetch origin gh-pages-src
+          git worktree add pages-src origin/gh-pages-src
+          rm -rf pages-src/python
+          mkdir -p pages-src/python
+          cp -r python-playwright/allure-report/* pages-src/python/
+          cd pages-src
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add python
+          git commit -m "chore: update python allure report [skip ci]" || echo "Nothing to commit"
+          git push origin HEAD:gh-pages-src || (git pull --rebase origin gh-pages-src && git push origin HEAD:gh-pages-src)
+
       - name: Upload Pages artifact
         if: always() && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: python-playwright/allure-report
+          path: pages-src
 
   deploy:
     needs: test
