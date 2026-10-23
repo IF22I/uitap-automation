@@ -58,6 +58,15 @@ jobs:
             mvn test -Dtest=TestRunner -Dcucumber.filter.tags="@smoke" -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
           fi  
 
+      - name: Download previous report history
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p java-selenium/allure-results/history
+          for file in history.json history-trend.json categories-trend.json duration-trend.json retry-trend.json; do
+            curl -f -s -o "java-selenium/allure-results/history/$file" \
+              "https://if22i.github.io/uitap-automation/java/history/$file" || true
+          done
+
       - name: Generate Allure report
         if: always()
         run: |
