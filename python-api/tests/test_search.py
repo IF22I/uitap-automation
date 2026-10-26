@@ -5,7 +5,7 @@ from config import BASE_URL
 
 @pytest.mark.smoke
 @pytest.mark.regression
-@pytest.mark.parametrize("term", ["top", "jean", "dressx"])
+@pytest.mark.parametrize("term", ["top", "jean", "dress"])
 def test_search_product_returns_results(term):
     response = requests.post(
         f"{BASE_URL}/searchProduct",
