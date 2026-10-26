@@ -1,17 +1,11 @@
 import pytest
-import requests
 
-from config import BASE_URL
 
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.parametrize("term", ["top", "jean", "dress"])
-def test_search_product_returns_results(term):
-    response = requests.post(
-        f"{BASE_URL}/searchProduct",
-        data={"search_product": term},
-        timeout=10
-    )
+def test_search_product_returns_results(api, term):
+    response = api.search_products(term)
 
     assert response.status_code == 200
     body = response.json()
@@ -23,10 +17,8 @@ def test_search_product_returns_results(term):
         assert term in searchable, f"'{term}' not found in: {searchable}"
 
 @pytest.mark.regression
-def test_search_product_without_parameter_is_bad_request():
-    response = requests.post(
-        f"{BASE_URL}/searchProduct",
-        timeout=10)
+def test_search_product_without_parameter_is_bad_request(api):
+    response = api.search_products()
 
     assert response.status_code == 200
     body = response.json()

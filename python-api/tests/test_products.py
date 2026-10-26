@@ -1,13 +1,10 @@
 import pytest
-import requests
-
-from config import BASE_URL
 
 
 @pytest.mark.smoke
 @pytest.mark.regression
-def test_get_all_products_returns_list():
-    response = requests.get(f"{BASE_URL}/productsList", timeout=10)
+def test_get_all_products_returns_list(api):
+    response = api.get_products()
 
     assert response.status_code == 200
     body = response.json()
@@ -15,8 +12,8 @@ def test_get_all_products_returns_list():
     assert len(body["products"]) > 0
 
 @pytest.mark.regression
-def test_post_to_products_list_is_not_supported():
-    response = requests.post(f"{BASE_URL}/productsList", timeout=10)
+def test_post_to_products_list_is_not_supported(api):
+    response = api.post_products()
 
     assert response.status_code == 200
     body = response.json()
