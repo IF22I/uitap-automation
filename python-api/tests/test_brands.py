@@ -4,7 +4,7 @@ import pytest
 @pytest.mark.smoke
 @pytest.mark.regression
 def test_get_all_brands_returns_list(api):
-    response = api.get_brandsList()
+    response = api.get_brands()
 
     assert response.status_code == 200
     body = response.json()
@@ -18,7 +18,7 @@ def test_get_all_brands_returns_list(api):
 
 @pytest.mark.regression
 def test_put_to_brands_list_is_not_supported(api):
-    response = api.put_brandsList()
+    response = api.put_brands()
 
     # This API reports errors in the JSON body, not in the HTTP status
     assert response.status_code == 200
