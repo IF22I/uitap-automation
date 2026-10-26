@@ -21,5 +21,19 @@ class AutomationExerciseClient:
         data = {"search_product": term} if term is not None else None
         return self.session.post(self._url("searchProduct"), data=data, timeout=self.timeout)
 
+    def get_brands(self):
+        return self.session.get(self._url("brandsList"), timeout=self.timeout)
+
+    def put_brands(self):
+        return self.session.put(self._url("brandsList"), timeout=self.timeout)
+
+    def verify_login(self, email=None, password=None):
+        data = {}
+        if email is not None:
+            data["email"] = email
+        if password is not None:
+            data["password"] = password
+        return self.session.post(self._url("verifyLogin"), data=data or None, timeout=self.timeout)
+
     def close(self):
         self.session.close()
