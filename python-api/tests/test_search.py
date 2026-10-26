@@ -24,3 +24,12 @@ def test_search_product_without_parameter_is_bad_request(api):
     body = response.json()
     assert body["responseCode"] == 400
     assert body["message"] == "Bad request, search_product parameter is missing in POST request."
+
+@pytest.mark.regression
+def test_search_product_with_no_match_returns_empty_list(api):
+    response = api.search_products("xyz123")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["responseCode"] == 200
+    assert len(body["products"]) == 0
