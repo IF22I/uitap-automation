@@ -1,6 +1,6 @@
 import pytest
-
 from api_client import AutomationExerciseClient
+
 
 @pytest.fixture(scope="session")
 def api():

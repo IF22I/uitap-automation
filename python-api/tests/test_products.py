@@ -15,6 +15,7 @@ def test_get_all_products_returns_list(api):
 def test_post_to_products_list_is_not_supported(api):
     response = api.post_products()
 
+    # This API reports errors in the JSON body, not in the HTTP status
     assert response.status_code == 200
     body = response.json()
     assert body["responseCode"] == 405

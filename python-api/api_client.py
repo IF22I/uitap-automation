@@ -1,6 +1,6 @@
 import requests
-
 from config import BASE_URL
+
 
 class AutomationExerciseClient:
     def __init__(self, base_url=BASE_URL, timeout=10):
