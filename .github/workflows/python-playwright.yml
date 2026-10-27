@@ -81,7 +81,7 @@ jobs:
           mkdir -p python-playwright/allure-results/history
           for file in history.json history-trend.json categories-trend.json duration-trend.json retry-trend.json; do
             curl -f -s -o "python-playwright/allure-results/history/$file" \
-              "https://if22i.github.io/uitap-automation/history/$file" || true
+              "https://if22i.github.io/uitap-automation/python/history/$file" || true
           done
 
       - name: Generate Allure report
