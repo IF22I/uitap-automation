@@ -52,6 +52,7 @@ jobs:
           playwright install-deps ${{ github.event.inputs.browser || 'chromium' }}
 
       - name: Install Playwright browser
+        id: browser
         timeout-minutes: 8
         run: |
           cd python-playwright
@@ -67,6 +68,7 @@ jobs:
           fi
         
       - name: Run Behave BDD tests
+        if: (success() || failure()) && steps.browser.outcome == 'success'
         run: |
           cd python-playwright
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
