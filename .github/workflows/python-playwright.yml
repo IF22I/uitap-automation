@@ -30,6 +30,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
@@ -44,10 +45,17 @@ jobs:
           cd python-playwright
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers
+      - name: Install Playwright system dependencies
+        timeout-minutes: 8
         run: |
           cd python-playwright
-          playwright install --with-deps
+          playwright install-deps ${{ github.event.inputs.browser || 'chromium' }}
+
+      - name: Install Playwright browser
+        timeout-minutes: 8
+        run: |
+          cd python-playwright
+          playwright install ${{ github.event.inputs.browser || 'chromium' }}
 
       - name: Run pytest tests
         run: |
