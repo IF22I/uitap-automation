@@ -3,6 +3,7 @@
 A dual-stack UI test automation portfolio for [uitestingplayground.com](http://uitestingplayground.com), built to demonstrate the same 22 testing scenarios solved two different ways: **Python + Playwright** and **Java + Selenium**. Both stacks run UI and BDD tests, report through Allure, and deploy automatically via CI.
 
 [![Python Playwright Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml)
+[![Python API Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml)
 [![Java Selenium Tests](https://github.com/IF22I/uitap-automation/actions/workflows/java-selenium.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/java-selenium.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
