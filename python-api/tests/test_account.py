@@ -23,7 +23,8 @@ def test_create_account_with_existing_email_is_rejected(api, account):
 
 @pytest.mark.regression
 def test_verify_login_with_wrong_password_is_rejected(api, account):
-    response = api.verify_login(email=account["email"], password="skibidi")
+    wrong_password = account["password"] + "-wrong"
+    response = api.verify_login(email=account["email"], password=wrong_password)
 
     assert response.status_code == 200
     body = response.json()

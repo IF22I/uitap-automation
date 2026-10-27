@@ -1,5 +1,6 @@
 import uuid
 
+
 def new_account():
     unique = uuid.uuid4().hex[:8]
     return {
