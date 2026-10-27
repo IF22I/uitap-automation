@@ -35,5 +35,12 @@ class AutomationExerciseClient:
             data["password"] = password
         return self.session.post(self._url("verifyLogin"), data=data or None, timeout=self.timeout)
 
+    def create_account(self, account):
+        return self.session.post(self._url("createAccount"), data=account, timeout=self.timeout)
+
+    def delete_account(self, email, password):
+        data = {"email": email, "password": password}
+        return self.session.delete(self._url("deleteAccount"), data=data, timeout=self.timeout)
+    
     def close(self):
         self.session.close()
