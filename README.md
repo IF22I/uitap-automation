@@ -1,6 +1,6 @@
 # UITAP Automation
 
-A dual-stack UI test automation portfolio for [uitestingplayground.com](http://uitestingplayground.com), built to demonstrate the same 22 testing scenarios solved two different ways: **Python + Playwright** and **Java + Selenium**. Both stacks run UI and BDD tests, report through Allure, and deploy automatically via CI.
+A test automation portfolio built on two practice sites. The same 22 UI scenarios from [uitestingplayground.com](http://uitestingplayground.com) are solved twice, with **Python + Playwright** and **Java + Selenium**, and a separate **API suite** tests the REST API of [automationexercise.com](https://automationexercise.com) with Python + requests. All suites report through Allure and run automatically in CI.
 
 [![Python Playwright Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml)
 [![Python API Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml)
@@ -23,14 +23,25 @@ Testing the same scenarios in two languages and two frameworks forces an honest 
 | Reporting | Allure | Allure |
 | Build/deps | `requirements.txt` (pinned) | Maven |
 
+## API test suite (`python-api/`)
+
+16 tests against the automationexercise.com REST API: products, search, brands, login and a full account lifecycle.
+
+- **API client** (`api_client.py`): one class wraps a `requests.Session` with the base URL and timeout. Tests call methods like `api.search_products("top")` and never build URLs, the same idea as the Page Object Model, one layer down.
+- **Fixtures**: one shared client for the whole run; a fresh account per test where tests change data.
+- **Test data with cleanup**: every account gets a unique email (`uuid`) and is deleted by a `yield` fixture, even when the test fails.
+- **Data-driven and negative tests**: parametrized search terms, missing login fields, unsupported methods, duplicate accounts.
+
+**Finding:** this API reports errors with HTTP `200 OK` and puts the real status (`405`, `400`, `404`) in the JSON body. The tests assert both layers, so they would notice if the API ever started using real status codes.
+
 ## CI/CD
 
-Both stacks run on GitHub Actions (`.github/workflows/python-playwright.yml`, `.github/workflows/java-selenium.yml`):
+Three workflows run on GitHub Actions: `python-playwright.yml`, `java-selenium.yml` and `python-api.yml`.
 
 - **On every push** to any branch, and **nightly at 02:00 UTC** (full regression).
 - **Manually** via `workflow_dispatch`, with dropdowns for browser (chromium/firefox/webkit for Python, chrome/firefox for Java) and test group (`smoke` or `regression`).
-- On `main`, both pipelines generate an Allure report and publish it to GitHub Pages, including Python's historical trend graph, which survives every deploy by pulling its own last published history before regenerating.
-- Since two independent workflows publish to one Pages site, a small shared storage branch (`gh-pages-src`) keeps each language's report in its own subfolder so neither deploy overwrites the other.
+- The API suite needs no browser and finishes in under a minute, so it runs its **full regression on every push**; the slower UI suites run smoke on push and full regression nightly.
+- On `main`, every pipeline publishes its Allure report to GitHub Pages (`/python/`, `/java/`, `/api/`), each with its own trend history. A shared storage branch (`gh-pages-src`) keeps each report in its own subfolder, so no deploy overwrites another.
 
 ## Architecture & patterns (Java side)
 
@@ -66,6 +77,17 @@ mvn test -Dgroups=smoke -Dbrowser=chrome        # smoke only, explicit browser
 allure open allure-report                       # after generating with `allure generate allure-results -o allure-report`
 ```
 
+### Python (API)
+```bash
+cd python-api
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+pytest -v                       # all 16 API tests
+pytest -m smoke -v              # smoke only
+```
+
 ## What I learned
 
 A few things from building and maintaining this repo that don't show up in a green checkmark:
@@ -74,6 +96,8 @@ A few things from building and maintaining this repo that don't show up in a gre
 - **"It passed" and "it did what I intended" are different claims.** A code review of an already-green Cucumber run caught a real bug: the `browser` system property was being read but never actually passed to the driver factory, every CI run was silently using the hardcoded default.
 - **Headless isn't one thing.** `ShadowDomTest`'s clipboard check was guarded against the wrong kind of "headless", JVM headless (`GraphicsEnvironment.isHeadless()`) instead of the browser's own headless flag, two genuinely different conditions that happened to usually agree, until they didn't.
 - **Not every test works in every browser.** Chromium exposes clipboard permissions Playwright can grant; Firefox doesn't. `test_22_shadowdom.py` now skips cleanly on non-Chromium browsers instead of failing with a confusing permissions error.
+- **Status codes can lie.** The practice API answers "method not supported" with HTTP 200. A test that only checks the status code would pass on every error, so the API tests always check the body too.
+- **A silenced error is still an error.** A history download ended in `|| true` (on purpose, the first run has no history yet), so when its URL broke, nothing complained: the Python trend graph quietly reset on every run. Now I check the result some other way whenever I hide errors.
 
 ## License
 
