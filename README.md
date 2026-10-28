@@ -99,6 +99,11 @@ A few things from building and maintaining this repo that don't show up in a gre
 - **Status codes can lie.** The practice API answers "method not supported" with HTTP 200. A test that only checks the status code would pass on every error, so the API tests always check the body too.
 - **A silenced error is still an error.** A history download ended in `|| true` (on purpose, the first run has no history yet), so when its URL broke, nothing complained: the Python trend graph quietly reset on every run. Now I check the result some other way whenever I hide errors.
 
+## Known limitations
+
+- **Shadow DOM clipboard test** skips in headless browsers and on non-Chromium browsers: there is no real clipboard to read there.
+- **Python Alerts test** is skipped: the page's JavaScript timer is throttled in headless Chromium, which makes the test unreliable in CI. The Java version covers the scenario.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
