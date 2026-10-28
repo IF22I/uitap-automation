@@ -7,6 +7,8 @@ A test automation portfolio built on two practice sites. The same 22 UI scenario
 [![Java Selenium Tests](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/java-selenium.yml/badge.svg)](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/java-selenium.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![Allure report overview: pass rate, trend history and suites](docs/allure-overview.png)
+
 **📊 Live Allure reports:** https://filip-wierzbicki-qa.github.io/uitap-automation/
 
 ## Why two stacks
