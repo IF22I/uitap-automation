@@ -64,11 +64,11 @@ jobs:
         run: |
           git fetch origin gh-pages-src
           git worktree add pages-src origin/gh-pages-src
-          mkdir -p python-playwright/allure-results/history
-          if [ -d pages-src/python/history ]; then
-            cp -r pages-src/python/history/. python-playwright/allure-results/history/
+          mkdir -p java-selenium/allure-results/history
+          if [ -d pages-src/java/history ]; then
+            cp -r pages-src/java/history/. java-selenium/allure-results/history/
           fi
-          echo "History files loaded: $(ls python-playwright/allure-results/history | wc -l) of 5"
+          echo "History files loaded: $(ls java-selenium/allure-results/history | wc -l) of 5"
 
       - name: Generate Allure report
         if: always()
@@ -87,8 +87,6 @@ jobs:
       - name: Publish Java report to combined site branch
         if: always() && github.ref == 'refs/heads/main'
         run: |
-          git fetch origin gh-pages-src
-          git worktree add pages-src origin/gh-pages-src
           rm -rf pages-src/java
           mkdir -p pages-src/java
           cp -r java-selenium/allure-report/* pages-src/java/
