@@ -50,6 +50,7 @@ jobs:
           fi
           
       - name: Run Cucumber BDD tests
+        if: success() || failure()
         run: |
           cd java-selenium
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.test_group }}" = "regression" ]; then
