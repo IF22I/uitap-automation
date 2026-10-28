@@ -1,5 +1,7 @@
 import requests
 from config import BASE_URL
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 
 class AutomationExerciseClient:
@@ -7,6 +9,17 @@ class AutomationExerciseClient:
         self.base_url = base_url
         self.timeout = timeout
         self.session = requests.Session()
+
+        # automationexercise.com is a shared demo site that occasionally answers 5xx.
+        # Retry those briefly; a real failure still shows up after the retries.
+        retry = Retry(
+            total=2,
+            backoff_factor=1,
+            status_forcelist=[502, 503, 504],
+            allowed_methods=None,
+            raise_on_status=False,
+        )
+        self.session.mount("https://", HTTPAdapter(max_retries=retry))
 
     def _url(self, path):
         return f"{self.base_url}/{path}"
