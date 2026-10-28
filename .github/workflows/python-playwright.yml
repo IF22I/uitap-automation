@@ -104,8 +104,6 @@ jobs:
       - name: Publish Python report to combined site branch
         if: always() && github.ref == 'refs/heads/main'
         run: |
-          git fetch origin gh-pages-src
-          git worktree add pages-src origin/gh-pages-src
           rm -rf pages-src/python
           mkdir -p pages-src/python
           cp -r python-playwright/allure-report/* pages-src/python/
