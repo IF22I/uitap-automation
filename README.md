@@ -2,12 +2,12 @@
 
 A test automation portfolio built on two practice sites. The same 22 UI scenarios from [uitestingplayground.com](http://uitestingplayground.com) are solved twice, with **Python + Playwright** and **Java + Selenium**, and a separate **API suite** tests the REST API of [automationexercise.com](https://automationexercise.com) with Python + requests. All suites report through Allure and run automatically in CI.
 
-[![Python Playwright Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-playwright.yml)
-[![Python API Tests](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/python-api.yml)
-[![Java Selenium Tests](https://github.com/IF22I/uitap-automation/actions/workflows/java-selenium.yml/badge.svg)](https://github.com/IF22I/uitap-automation/actions/workflows/java-selenium.yml)
+[![Python Playwright Tests](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/python-playwright.yml/badge.svg)](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/python-playwright.yml)
+[![Python API Tests](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/python-api.yml/badge.svg)](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/python-api.yml)
+[![Java Selenium Tests](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/java-selenium.yml/badge.svg)](https://github.com/filip-wierzbicki-qa/uitap-automation/actions/workflows/java-selenium.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**📊 Live Allure reports:** https://if22i.github.io/uitap-automation/
+**📊 Live Allure reports:** [https://filip-wierzbicki-qa.github.io/uitap-automation/](https://github.com/filip-wierzbicki-qa/uitap-automation)
 
 ## Why two stacks
 
